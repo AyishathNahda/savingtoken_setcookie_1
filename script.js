@@ -1,12 +1,9 @@
-const encrypt = (payload) => {
-  // encrypt the payload and return token
-}
+const { encrypt, decrypt } = require('./utils/jwtUtils');
 
-const decrypt = (token) => {
-  // return decoded payload
-}
+const myPayload = { userId: 123, role: 'therapist' };
 
-module.exports = {
-  encrypt,
-  decrypt
-}
+const encryptedToken = encrypt(myPayload);
+console.log('Encrypted Token:', encryptedToken);
+
+const decryptedPayload = decrypt(encryptedToken);
+console.log('Decrypted Payload:', decryptedPayload); // Should print: { userId: 123, role: 'therapist', iat:..., exp:... }
